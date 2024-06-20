@@ -1,0 +1,11 @@
+POST {{host}}/api/feedback/create
+Content-Type: application/json
+Authorization: {{token}}
+
+{
+  "description": "Teste de criação do feedback",
+  "evaluation": 4,
+  "query": "5ec58b44f549f2001c279a21"
+}
+
+###

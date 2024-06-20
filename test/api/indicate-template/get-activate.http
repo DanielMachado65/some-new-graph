@@ -1,0 +1,5 @@
+GET {{host}}/api/indicate-template/active
+Content-Type: application/json
+Authorization: {{token}}
+
+###

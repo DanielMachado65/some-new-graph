@@ -1,0 +1,6 @@
+GET {{host}}/api/protected/quiz/by-id/5e13889a5bf0cd2d601ee867
+Content-Type: application/json
+Authorization: {{token}}
+Supper: {{supper_token}}
+
+###

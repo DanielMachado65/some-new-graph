@@ -1,0 +1,21 @@
+POST {{host}}/api/partner-interaction
+Content-Type: application/json
+
+{
+  "userId": "",
+  "queryId": "612fb3397c95e5001193b0c2",
+  "link": "https://www.pier.digital/seguro-auto?utm_source=parceiro-olho-no-carro&utm_medium=pc&utm_campaign=at_3_11_lead_pc-onc_parceiro"
+}
+
+###
+
+POST {{host}}/api/report/analytics/redirections
+Content-Type: application/json
+Supper: {{supper_token}}
+
+{
+  "month": "",
+  "year": ""
+}
+
+###

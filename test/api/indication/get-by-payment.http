@@ -1,0 +1,6 @@
+GET {{host}}/api/protected/indication/by-payment/5bb251d10d11a96b893d2505
+Content-Type: application/json
+Authorization: {{token}}
+Supper: {{supper_token}}
+
+###

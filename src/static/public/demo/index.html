@@ -1,0 +1,97 @@
+<html>
+<head></head>
+<body>
+  <h1>Teste de geração de token - OlhoNoCarro + GerenciaNet.</h1>
+  <hr>
+  <label>Para visualizar o código aperte F12. A requisição possui um time delay de aproximadamente 4 segundos.</label><br><br>
+  <label id="token"></label>
+  <br>
+  <br />
+  <label> PASSO 1: Injete o script do GerenciaNet na pagina html que irá efetuar o pagamento. (SCRIPT DE DESENVOLVIMENTO ABAIXO)</label><br><br>
+  <textarea rows="10" cols="80" class="form-control"><script type='text/javascript'>var s=document.createElement('script');s.type='text/javascript';var v=parseInt(Math.random()*1000000);s.src='https://sandbox.gerencianet.com.br/v1/cdn/6b98e0eaed7d0046c5d2fb770719ab22/'+v;s.async=false;s.id='6b98e0eaed7d0046c5d2fb770719ab22';if(!document.getElementById('6b98e0eaed7d0046c5d2fb770719ab22')){document.getElementsByTagName('head')[0].appendChild(s);};$gn={validForm:true,processed:false,done:{},ready:function(fn){$gn.done=fn;}};</script></textarea>
+  <br>
+  <hr>
+  <br>
+  <label> PASSO 2: Obtendo um "payment_token" ( getPaymentToken )</label><br>
+  <textarea rows="23" cols="50">
+    $gn.ready(function(checkout) {
+
+      var callback = function(error, response) {
+        if(error) {
+          // Trata o erro ocorrido
+          console.error(error);
+        } else {
+          // Trata a resposta
+          console.log(response);
+        }
+      };
+
+      checkout.getPaymentToken({
+        brand: 'visa', // bandeira do cartão
+        number: '4012001038443335', // número do cartão
+        cvv: '123', // código de segurança
+        expiration_month: '05', // mês de vencimento
+        expiration_year: '2018' // ano de vencimento
+      }, callback);
+
+    });
+  </textarea>
+  <br>
+  <hr>
+  <br>
+  <label>PASSO 3: Obtendo informações sobre parcelamentos ( getInstallments )</label><br><br>
+  <textarea rows="23" cols="50">
+    $gn.ready(function(checkout){
+
+      checkout.getInstallments(50000,'visa', function(error, response){
+        if(error) {
+          // Trata o erro ocorrido
+          console.log(error);
+        } else {
+          // Insere o parcelamento no site
+        }
+      });
+
+    });
+  </textarea>
+
+  <script type='text/javascript'>var s=document.createElement('script');s.type='text/javascript';var v=parseInt(Math.random()*1000000);s.src='https://sandbox.gerencianet.com.br/v1/cdn/6b98e0eaed7d0046c5d2fb770719ab22/'+v;s.async=false;s.id='6b98e0eaed7d0046c5d2fb770719ab22';if(!document.getElementById('6b98e0eaed7d0046c5d2fb770719ab22')){document.getElementsByTagName('head')[0].appendChild(s);};$gn={validForm:true,processed:false,done:{},ready:function(fn){$gn.done=fn;}};</script>
+  <script type="text/javascript">
+  $gn.ready(function(checkout) {
+
+    var callback = function(error, response) {
+      if(error) {
+        debugger;
+        console.error(error);
+      } else {
+        debugger;
+        if(response && response.code == 200){
+          document.getElementById('token').innerHTML = `<b>TOKEN GERADO : ${response.data.payment_token}</b>`;
+        }
+        console.log(response);
+      }
+    };
+
+    checkout.getPaymentToken({
+      brand: 'visa', // bandeira do cartão
+      number: '4012001038443335', // número do cartão
+      cvv: '123', // código de segurança
+      expiration_month: '05', // mês de vencimento
+      expiration_year: '2018' // ano de vencimento
+    }, callback);
+
+    checkout.getInstallments(50000,'visa', function(error, response){
+      if(error) {
+        console.log(error);
+      } else {
+        debugger;
+        console.log(response);
+        // Inserir o parcelamento no site
+      }
+    });
+
+
+  });
+  </script>
+</body>
+</html>

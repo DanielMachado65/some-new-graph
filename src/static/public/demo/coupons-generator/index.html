@@ -1,0 +1,123 @@
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <br>
+        <h1>Olho no Carro - desenvolvimento</h1>
+        <hr>
+        <h3>DEMO - Gerador de cupons.</h3>
+        <hr>
+        <br>
+        <form>
+          <div class="form-group">
+            <label for="numberInpt">Numero de cupons </label>
+            <input type="number" class="form-control" id="numberInpt" aria-describedby="numberHelp" placeholder="Entre com a quantidade">
+            <small id="numberHelp" class="form-text text-muted">Entre apenas com números inteiros e positivos.</small>
+          </div>
+          <div class="form-group">
+            <label for="percentInpt">Percentual (%)</label>
+            <input type="number" max="100" min="0" class="form-control" id="percentInpt" aria-describedby="percentHelp" placeholder="Percentual">
+            <small id="percentHelp" class="form-text text-muted">O valor deve variar de 0 a 100.</small>
+          </div>
+          <div class="form-group">
+            <label for="fixedInpt">Valor fixo para desconto (R$)</label>
+            <input type="number" min="0" class="form-control" id="fixedInpt" aria-describedby="fixedInptHelp" placeholder="Valor fixo">
+            <small id="fixedInptHelp" class="form-text text-muted">O valor deve ser um valor numérico válido.</small>
+          </div>
+          <div class="form-group">
+            <label for="minToApplyInpt">Valor mínimo de compra</label>
+            <input type="number" min="0" class="form-control" id="minToApplyInpt" aria-describedby="minToApplyInptHelp" placeholder="Valor mínimo">
+          </div>
+          <div class="form-group">
+            <label for="useLimitInpt">Limite de uso</label>
+            <input type="number" min="0" class="form-control" id="useLimitInpt" aria-describedby="useLimitInptHelp" placeholder="Limite de uso">
+          </div>
+          <button type="button" onclick="sendData();" class="btn btn-primary">Gerar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js" integrity="sha384-feJI7QwhOS+hwpX2zkaeJQjeiwlhOP+SdQDqhgvvo1DsjtiSQByFdThsxO669S2D" crossorigin="anonymous"></script>
+  <script type="text/javascript">
+
+
+  function sendData () {
+    debugger;
+    let number = document.getElementById('numberInpt').value;
+    let percentInpt = document.getElementById('percentInpt').value;
+    let fixedInpt = document.getElementById('fixedInpt').value;
+    let minToApplyInpt = document.getElementById('minToApplyInpt').value;
+    let useLimitInpt = document.getElementById('useLimitInpt').value;
+
+    let obj = {
+      "number" : parseInt(number),
+      "rules" : {
+        "discountPercentage" : parseInt(percentInpt),
+        "discountValue" : parseInt(fixedInpt),
+        "minValueToApply" : parseInt(minToApplyInpt),
+        "limitUsage" : parseInt(useLimitInpt)
+      }
+    }
+    debugger;
+    console.log(obj);
+    var xmlHttpRequest = new XMLHttpRequest();
+    // xmlHttpRequest.onreadystatechange = function(){
+    //   if(xmlHttpRequest.readyState == XMLHttpRequest.DONE){
+    //     debugger
+    //     let response = xmlHttpRequest.responseText;
+    //   }
+    // }
+    xmlHttpRequest.responseType = 'arraybuffer';
+    xmlHttpRequest.onload = function () {
+      if (this.status === 200) {
+        var filename = "";
+        var disposition = xmlHttpRequest.getResponseHeader('Content-Disposition');
+        if (disposition && disposition.indexOf('attachment') !== -1) {
+          var filenameRegex = /filename[^;=\n]*=((['"]).*?\2|[^;\n]*)/;
+          var matches = filenameRegex.exec(disposition);
+          if (matches != null && matches[1]) filename = matches[1].replace(/['"]/g, '');
+        }
+        var type = xmlHttpRequest.getResponseHeader('Content-Type');
+        var blob = typeof File === 'function'
+        ? new File([this.response], filename, { type: type })
+        : new Blob([this.response], { type: type });
+        if (typeof window.navigator.msSaveBlob !== 'undefined') {
+          // IE workaround for "HTML7007: One or more blob URLs were revoked by closing the blob for which they were created. These URLs will no longer resolve as the data backing the URL has been freed."
+          window.navigator.msSaveBlob(blob, filename);
+        } else {
+          var URL = window.URL || window.webkitURL;
+          var downloadUrl = URL.createObjectURL(blob);
+
+          if (filename) {
+            // use HTML5 a[download] attribute to specify filename
+            var a = document.createElement("a");
+            // safari doesn't support this yet
+            if (typeof a.download === 'undefined') {
+              window.location = downloadUrl;
+            } else {
+              a.href = downloadUrl;
+              a.download = filename;
+              document.body.appendChild(a);
+              a.click();
+            }
+          } else {
+            window.location = downloadUrl;
+          }
+          setTimeout(function () { URL.revokeObjectURL(downloadUrl); }, 100); // cleanup
+        }
+      }
+    };
+
+    var url = `http://localhost:8080/api/coupon`;
+    xmlHttpRequest.open('POST',url,true);
+    xmlHttpRequest.setRequestHeader("Content-Type", "application/json");
+    xmlHttpRequest.send(JSON.stringify(obj));
+  }
+  </script>
+</body>
+</html>

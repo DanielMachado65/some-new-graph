@@ -1,0 +1,6 @@
+DELETE {{host}}/api/protected/feedback/delete/5ec57b014f02a60ba82a999c
+Content-Type: application/json
+Authorization: {{token}}
+Supper: {{supper_token}}
+
+###

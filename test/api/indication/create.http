@@ -1,0 +1,13 @@
+POST {{host}}/api/protected/indication/
+Content-Type: application/json
+Authorization: {{token}}
+Supper: {{supper_token}}
+
+{
+  "client": "{{user_id}}",
+  "indicator":  "{{user_id}}",
+  "indicateTemplate": "5ee3d3e544ffb11eb4dd5e02",
+  "payment": null
+}
+
+###

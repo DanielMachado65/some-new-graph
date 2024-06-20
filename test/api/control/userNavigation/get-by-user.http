@@ -1,0 +1,5 @@
+GET {{host}}/api/control-navigation/user/{{user_id}}
+Content-Type: application/json
+Authorization: {{token}}
+
+###

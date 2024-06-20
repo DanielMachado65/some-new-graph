@@ -1,0 +1,92 @@
+# @name login
+POST {{host}}/auth/login
+Content-Type: application/json
+
+{
+  "username" : "{{username}}",
+  "password": "{{password}}"
+}
+
+###
+
+@token = {{login.response.body.$.body.token}}
+@supper_token = {{login.response.body.$.body.supper_token}}
+
+###
+
+GET {{host}}/api/company/available-infos
+Content-Type: application/json
+Authorization: {{token}}
+Supper: {{supper_token}}
+
+###
+
+GET {{host}}/api/company/faq
+Content-Type: application/json
+Authorization: {{token}}
+Supper: {{supper_token}}
+
+###
+
+PUT {{host}}/api/company/faq
+Content-Type: application/json
+Authorization: {{token}}
+Supper: {{supper_token}}
+
+{
+  "faq": [
+    "6053a1fec6d6de1858419fdf",
+    "6053a238c6d6de1858419fe0",
+    "6053a253c6d6de1858419fe1",
+    "6053a266c6d6de1858419fe2",
+    "6053a279c6d6de1858419fe3",
+    "6053a2aec6d6de1858419fe4",
+    "6053a2c4c6d6de1858419fe5",
+    "6053a2e4c6d6de1858419fe6",
+    "6053a2fac6d6de1858419fe7",
+    "6053a313c6d6de1858419fe8",
+    "6053a325c6d6de1858419fe9"
+  ]
+}
+
+###
+
+PUT {{host}}/api/company/in-media
+Content-Type: application/json
+Authorization: {{token}}
+Supper: {{supper_token}}
+
+{
+  "medias": [
+    {
+      "logo": "https://onc-midia.s3.amazonaws.com/logo-uol.png",
+      "title": "Uol",
+      "description": "Lorem ipsum",
+      "url": "https://www.uol/noticias/conteudo-publicitario/sebrae-sp-conhecimento-avancado-para-empreender.htm#tematico-3"
+    },
+    {
+      "logo": "https://onc-midia.s3.amazonaws.com/logo-canaltech.png",
+      "title": "Canaltech",
+      "description": "Lorem ipsum",
+      "url": "https://canaltech.com.br/startup/autotechs-o-brasil-sobre-rodas-120146/"
+    },
+    {
+      "logo": "https://onc-midia.s3.amazonaws.com/logo-projetodraft.png",
+      "title": "Projeto Draft",
+      "description": "Lorem ipsum",
+      "url": "https://projetodraft.com/a-olho-no-carro-realiza-consultas-do-historico-de-veiculos-seminovos-e-usados/"
+    },
+    {
+      "logo": "https://onc-midia.s3.amazonaws.com/logo-startupi.png",
+      "title": "Startupi",
+      "description": "Lorem ipsum",
+      "url": "https://startupi.com.br/2019/01/carros-autonomos-inteligencia-artificial-e-personalizacao-de-veiculos-o-que-esperar-do-mercado-de-autotechs-para-os-proximos-anos/"
+    },
+    {
+      "logo": "https://onc-midia.s3.amazonaws.com/logo-segs.png",
+      "title": "Segs",
+      "description": "Lorem ipsum",
+      "url": "https://www.segs.com.br/veiculos/157977-o-impacto-do-carro-usado-ou-seminovo-no-seu-bolso"
+    }
+  ]
+}

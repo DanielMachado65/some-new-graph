@@ -1,0 +1,10 @@
+#PATCH {{host}}/api/quiz-answer/facebook/:quizAnswerId
+
+PATCH {{host}}/api/quiz-answer/facebook/5eecd6ad807a5123388f8db4
+Content-Type: application/json
+
+{
+  "shared": true
+}
+
+###

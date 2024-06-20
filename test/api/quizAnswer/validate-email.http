@@ -1,0 +1,6 @@
+GET {{host}}/api/quiz-answer/validate?quizId=5e14c0899e59d54908cf6ff9&email=william.castro@olhonoacrro.com.br
+Content-Type: application/json
+Authorization: {{token}}
+Supper: {{supper_token}}
+
+###

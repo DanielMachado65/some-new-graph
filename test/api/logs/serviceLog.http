@@ -1,0 +1,4 @@
+GET {{host}}/api/protected/service-log/service-name/638e05a7d742b97b56f184da
+Content-Type: application/json
+Authorization: {{token}}
+Supper: {{supper_token}}

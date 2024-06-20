@@ -1,0 +1,6 @@
+GET {{host}}/api/quiz-answer/by-email/'william.castro@olhonoacrro.com.br'
+Content-Type: application/json
+Authorization: {{token}}
+Supper: {{supper_token}}
+
+###

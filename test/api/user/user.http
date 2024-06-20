@@ -1,0 +1,97 @@
+POST {{host}}/api/user/new
+Content-Type: application/json
+
+{
+    "name": "Sr. Batata",
+    "email": "sr.batata@gmail.com",
+    "pass": "1234",
+    "cpf": "1111111111111",
+    "generalData": {
+      "phoneNumber1": "122334490",
+      "address": {
+        "state": "SP",
+        "city": "Caraguatatuba",
+        "zipcode": "11674360",
+        "neighborhood": "Jardim Jaqueira",
+        "street": "Rua Maria Cândida D' Onofrio Corrêa",
+        "number": "1000"
+      }
+    },
+    "consents": [],
+    "creationOrigin": "website"
+}
+
+###
+#with voucher
+POST {{host}}/api/user/new
+Content-Type: application/json
+
+{
+  "email": "w@email.com",
+  "cpf": "27969744052",
+  "name": "mazzons",
+  "pass": "123456",
+  "voucher": 1000376
+}
+
+###
+
+POST {{host}}/api/protected/user/new
+Content-Type: application/json
+
+{
+  "email": "w@email.com",
+  "cpf": "27969744052",
+  "name": "mazzons",
+  "pass": "123456",
+  "voucher": 1000376
+}
+
+
+###
+GET {{host}}/api/protected/user/user-id?email=filipemazzon@gec.inatel.br
+Authorization: {{token}}
+Supper: {{supper_token}}
+
+###
+
+GET {{host}}/api/user/sign-in-data/5daf39ddc5c67d3ac8abbdc6
+Content-Type: application/json
+Accept: application/json
+Authorization: {{token}}
+Supper: {{supper_token}}
+
+###
+
+GET {{host}}/api/protected/user/get-all-administrators
+Accept: application/json
+Authorization: {{token}}
+Supper: {{supper_token}}
+
+###
+
+GET {{host}}/api/protected/user/get-all-integrators
+Accept: application/json
+Authorization: {{token}}
+Supper: {{supper_token}}
+
+###
+
+GET {{host}}/api/protected/user/get-all-pre-paid
+Accept: application/json
+Authorization: {{token}}
+Supper: {{supper_token}}
+
+###
+
+GET {{host}}/api/protected/user/get-all-pos-paid
+Accept: application/json
+Authorization: {{token}}
+Supper: {{supper_token}}
+
+###
+
+GET {{host}}/api/protected/user/get-all-partners
+Accept: application/json
+Authorization: {{token}}
+Supper: {{supper_token}}

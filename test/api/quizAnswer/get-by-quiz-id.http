@@ -1,0 +1,6 @@
+GET {{host}}/api/quiz-answer/by-quiz-id/5e14c0899e59d54908cf6ff9
+Content-Type: application/json
+Authorization: {{token}}
+Supper: {{supper_token}}
+
+###

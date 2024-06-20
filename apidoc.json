@@ -1,0 +1,8 @@
+{
+  "name": "API - Olhonocarro",
+  "version": "0.2.0",
+  "description": "Olhonocarro | Ambiente seguro disponível para integração com terceiros via RestFull Services.",
+  "title": "Olhonocarro apiDoc | Integradores",
+  "url" : "https://api.olhonocarro.com.br",
+  "template.forceLanguage" : "pt_br"
+}

@@ -1,0 +1,6 @@
+PATCH {{host}}/api/user/update-phone-number/{{user_id}}
+Content-Type: application/json
+
+{
+  "phoneNumber": "888888888"
+}

@@ -1,0 +1,59 @@
+GET {{host}}/api/query-info
+Content-Type: application/json
+Authorization: {{token}}
+Supper: {{supper_token}}
+
+###
+
+POST {{host}}/api/query-info
+Content-Type: application/json
+Authorization: {{token}}
+Supper: {{supper_token}}
+
+{
+  "image": "Generic Image",
+  "name": "Generic Name",
+  "description": "Generic Description",
+  "isAvailable": "always",
+  "isAvailableToOthers": "none"
+}
+
+###
+
+PUT {{host}}/api/query-info/603553e679b16002892c444a
+Content-Type: application/json
+Authorization: {{token}}
+Supper: {{supper_token}}
+
+{
+  "description": "Generic Description Updated"
+}
+
+###
+
+DELETE {{host}}/api/query-info/603553e679b16002892c444a
+Content-Type: application/json
+Authorization: {{token}}
+Supper: {{supper_token}}
+
+###
+
+GET {{host}}/api/protected/query/all
+Content-Type: application/json
+Authorization: {{token}}
+Supper: {{supper_token}}
+
+###
+
+GET {{host}}/api/query/by-id/64f620f69eba21c5cd074d51
+Content-Type: application/json
+Authorization: {{token}}
+Supper: {{supper_token}}
+
+###
+
+GET {{host}}/api/query/consumption-pagination/6006d621f323ba0011667c29?page=3&limit=10
+Content-Type: application/json
+Authorization: {{token}}
+
+###

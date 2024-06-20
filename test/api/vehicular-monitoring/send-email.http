@@ -1,0 +1,29 @@
+POST {{host}}/api/notification/callback/send-email
+Content-Type: application/json
+
+{
+  "payload": {
+    "userId": "5daf39ddc5c67d3ac8abbdc6",
+    "email": "alisson.morais@olhonocarro.com.br",
+    "carName": "Carro",
+    "plate": "AAA0001",
+    "type": "firstEmail"
+  }
+}
+
+###
+
+POST {{host}}/api/notification/callback/send-email
+Content-Type: application/json
+
+{
+  "payload": {
+    "userId": "5daf39ddc5c67d3ac8abbdc6",
+    "email": "alisson.morais@olhonocarro.com.br",
+    "carName": "Carro",
+    "plate": "AAA0001",
+    "type": "secondEmail"
+  }
+}
+
+###

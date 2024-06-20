@@ -1,0 +1,106 @@
+{
+  "taskDefinitionArn": "arn:aws:ecs:sa-east-1:865350113542:task-definition/apiOlhonocarroHomol:247",
+  "containerDefinitions": [
+    {
+      "name": "apiOlhonocarroHomol",
+      "image": "865350113542.dkr.ecr.sa-east-1.amazonaws.com/api-olhonocarro:189abd32c7bccbc6a5c16f1141ab7079cc9ae4e4",
+      "cpu": 256,
+      "memoryReservation": 512,
+      "portMappings": [
+        {
+          "name": "apiolhonocarrohomol-8080-tcp",
+          "containerPort": 8080,
+          "hostPort": 8080,
+          "protocol": "tcp"
+        }
+      ],
+      "essential": true,
+      "environment": [],
+      "environmentFiles": [
+        {
+          "value": "arn:aws:s3:::olhonocarro.environments/legacy-api.develop.env",
+          "type": "s3"
+        }
+      ],
+      "mountPoints": [],
+      "volumesFrom": [],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/apiOlhonocarroHomol",
+          "awslogs-region": "sa-east-1",
+          "awslogs-stream-prefix": "ecs"
+        },
+        "secretOptions": []
+      },
+      "healthCheck": {
+        "command": [
+          "CMD-SHELL",
+          "npm run healthcheck"
+        ],
+        "interval": 30,
+        "timeout": 20,
+        "retries": 5,
+        "startPeriod": 15
+      }
+    }
+  ],
+  "family": "apiOlhonocarroHomol",
+  "taskRoleArn": "arn:aws:iam::865350113542:role/ecsTaskExecutionRole",
+  "executionRoleArn": "arn:aws:iam::865350113542:role/ecsTaskExecutionRole",
+  "networkMode": "awsvpc",
+  "revision": 247,
+  "volumes": [],
+  "status": "ACTIVE",
+  "requiresAttributes": [
+    {
+      "name": "com.amazonaws.ecs.capability.logging-driver.awslogs"
+    },
+    {
+      "name": "ecs.capability.execution-role-awslogs"
+    },
+    {
+      "name": "com.amazonaws.ecs.capability.ecr-auth"
+    },
+    {
+      "name": "com.amazonaws.ecs.capability.docker-remote-api.1.19"
+    },
+    {
+      "name": "ecs.capability.env-files.s3"
+    },
+    {
+      "name": "com.amazonaws.ecs.capability.docker-remote-api.1.21"
+    },
+    {
+      "name": "com.amazonaws.ecs.capability.task-iam-role"
+    },
+    {
+      "name": "ecs.capability.container-health-check"
+    },
+    {
+      "name": "ecs.capability.execution-role-ecr-pull"
+    },
+    {
+      "name": "com.amazonaws.ecs.capability.docker-remote-api.1.18"
+    },
+    {
+      "name": "ecs.capability.task-eni"
+    },
+    {
+      "name": "com.amazonaws.ecs.capability.docker-remote-api.1.29"
+    }
+  ],
+  "placementConstraints": [],
+  "compatibilities": [
+    "EC2",
+    "FARGATE"
+  ],
+  "requiresCompatibilities": [
+    "FARGATE"
+  ],
+  "cpu": "256",
+  "memory": "512",
+  "registeredAt": "2023-09-21T15:21:57.433Z",
+  "registeredBy": "arn:aws:iam::865350113542:user/alisson.morais@olhonocarro.com.br",
+  "tags": []
+}

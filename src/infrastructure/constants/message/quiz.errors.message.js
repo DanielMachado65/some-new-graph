@@ -1,0 +1,30 @@
+'use strict';
+
+module.exports = {
+    CREATE_QUIZ_ERROR: 'Não foi possível criar um Quiz. Por favor, verifique os dados informados e tente novamente.',
+    GET_QUIZ_BY_CREATOR_ERROR: 'Não foi possível buscar o Quiz pelo ID do usário. Por favor, verifique o ID informado e tente novamente',
+    GET_QUIZ_BY_ID_ERROR: 'Não foi possível buscar o Quiz por ID. Por favor, verifique o ID informado e tente novamente',
+    GET_MESSAGE_AND_TITLE_BY_QUIZ_ID_ERROR: 'Não foi possível buscar as informações do Quiz por ID. Por favor, verifique o ID informado e tente novamente',
+    GET_ALL_QUIZ_ERROR: 'Não foi possível buscar todos os Quiz.',
+    INVALID_ANSWERS_QUIZ_ERROR: 'Os parâmetros informados como resposta está inválido. Por valide, se os dados foram informados corretamente.',
+    INVALID_EXPLANATION_QUIZ_ERROR: 'Explicação inválida. Por favor, verifique os dados informados e tente novamente.',
+    INVALID_QUESTION_QUIZ_ERROR: 'Pergunta inválida. Por favor, verifique os dados informados e tente novamente',
+    INVALID_RIGHT_ANSWER_QUIZ_ERROR: 'Resposta Correta inválida. Por favor, verifique os dados informados e tente novamente',
+    INVALID_TITLE_TYPE_QUIZ: 'Título inválido. Por favor, verifique os dados informados e tente novamente',
+    INVALID_COUPON_NAME_TYPE_QUIZ: 'Nome do Cupom inválido. Por favor, verifique os dados informados e tente novamente',
+    INVALID_QUESTION_TIME_QUIZ: 'Tempo para responder inválido. Por favor, verifique os dados informados e tente novamente',
+    INVALID_DISCOUNT_PERCENTAGE_QUIZ: 'Valor de desconto por respota errado. Por favor, verifique os dados informados e tente novamente',
+    INVALID_IMAGE_QUIZ_ERROR: 'Não foi possível salvar a imagem. Por favor, verifique o tipo e tente novamente',
+    UPDATE_QUIZ_ERROR: 'Não foi possível atualizar o Quiz. Por favor, verifique os dados informados e tente novamente.',
+    VALIDATION_QUIZ_ERROR: 'Não foi possível validar os dados do Quiz. Por favor verifique-os e tente novamente.',
+    REMOVE_QUIZ_ERROR: 'Não foi possível excluir o Quiz. Tente novamente.',
+    INVALID_PARAMETERS_TO_EXECUTE_QUERY: 'Parâmetros inválidos, ou faltosos para executar essa consulta.',
+    RECORD_NOT_FOUND: 'Nenhum registro encontrado para a consulta realizada.',
+    QUERY_NOT_EXISTS: 'Consulta inexistente ou inválida.',
+    QUERY_ALREADY_EXISTS: 'O consulta solicitada ja existe no banco de dados.',
+    PARTIALLY_EXECUTED: 'Consulta parcialmente executada.',
+    SERVICE_NOT_FOUND: 'Servico não econtrado ou inexistente.',
+    INVALID_CODE: 'Não foi possível encontrar a consulta solicitada.',
+    TOTAL_QUERY_EXCEEDED: 'O limite de segurança desta consulta foi atingido por você neste mês. Entre em contato com nossa equipe para que a liberação da trava de segurança seja feita.',
+    QUERY_EXECUTION_ERROR: 'Consulta momentaneamente indisponível, nossa área técnica já está atuando para resolução do problema. Realize novamente a pesquisa dentro de alguns minutos, caso precise entre em contato conosco via chat-online.'
+}

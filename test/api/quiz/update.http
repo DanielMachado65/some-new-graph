@@ -1,0 +1,55 @@
+PATCH {{host}}/api/protected/quiz/update
+Content-Type: application/json
+Authorization: {{token}}
+Supper: {{supper_token}}
+
+{
+  "quizId": "5e13889a5bf0cd2d601ee867",
+  "enable": false,
+  "title": "Título - Alterado",
+  "message": "Mensagem padrão de compartilhamento alterada!!",
+  "questions": [
+    {
+      "question": "PERGUNTA 1 - Alterada",
+      "answers": [
+        {
+          "answer": "RESPOSTA A - hahahaha"
+        },
+        {
+          "answer": "RESPOSTA B"
+        },
+        {
+          "answer": "RESPOSTA C"
+        },
+        {
+          "answer": "RESPOSTA D"
+        }
+      ],
+      "rightAnswer": "RESPOSTA A",
+      "explanation": "Explicação",
+      "imageURL": "https://s3-sa-east-1.amazonaws.com/olhonocarro.quiz/pergunta_1.png"
+    },
+    {
+      "question": "PERGUNTA 2 - hahahah",
+      "answers": [
+        {
+          "answer": "RESPOSTA A"
+        },
+        {
+          "answer": "RESPOSTA B"
+        },
+        {
+          "answer": "RESPOSTA C"
+        },
+        {
+          "answer": "RESPOSTA D"
+        }
+      ],
+      "rightAnswer": "RESPOSTA B",
+      "explanation": "Explicação 2",
+      "imageURL": "https://s3-sa-east-1.amazonaws.com/olhonocarro.quiz/pergunta_.png"
+    }
+  ]
+}
+
+###

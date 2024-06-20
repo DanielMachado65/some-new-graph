@@ -1,0 +1,6 @@
+GET {{host}}/api/protected/indicate-template/by-user/{{user_id}}
+Content-Type: application/json
+Authorization: {{token}}
+Supper: {{supper_token}}
+
+###

@@ -1,0 +1,7 @@
+PATCH {{host}}/api/control-navigation/user/dialog-phone-number/
+Content-Type: application/json
+Authorization: {{token}}
+
+{
+  "timesClosed": 20
+}

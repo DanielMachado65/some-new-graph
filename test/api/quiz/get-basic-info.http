@@ -1,0 +1,4 @@
+GET {{host}}/api/quiz/basic-info/5e7e60e95ea5ea001b4d02fb
+Content-Type: application/json
+###
+

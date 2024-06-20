@@ -1,0 +1,58 @@
+POST {{host}}/api/indicate-and-earn-query/create-hash
+Content-Type: application/json
+Authorization: {{token}}
+
+###
+
+GET {{host}}/api/indicate-and-earn-query/transactions-credit
+Authorization: {{token}}
+
+###
+
+GET {{host}}/api/indicate-and-earn-query/transactions-debit
+Authorization: {{token}}
+
+###
+
+GET {{host}}/api/indicate-and-earn-query/transactions-totals
+Authorization: {{token}}
+
+###
+
+GET {{host}}/api/indicate-and-earn-query/transactions-balance
+Authorization: {{token}}
+
+###
+
+POST {{host}}/api/indicate-and-earn-query/indicated
+Content-Type: application/json
+Authorization: {{token}}
+
+{
+  "email": "teste10000@email.com",
+  "hashlinkId": "59c255c6-d6c3-4675-a011-f047b1f08197"
+}
+
+###
+
+POST {{host}}/api/indicate-and-earn-query/transaction-debit-withdrawal
+Content-Type: application/json
+Authorization: {{token}}
+
+{
+  "pixType": "cpf",
+  "pixKey": "08601020097",
+  "value": 142
+}
+
+###
+
+POST {{host}}/api/indicate-and-earn-query/transaction-debit-with-onc-wallet
+Content-Type: application/json
+Authorization: {{token}}
+
+{
+  "value": 200
+}
+
+###

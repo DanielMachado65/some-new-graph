@@ -1,0 +1,182 @@
+# @name login
+POST {{host}}/auth/login
+Content-Type: application/json
+
+{
+  "username" : "{{username}}",
+  "password": "{{password}}"
+}
+
+###
+
+@token = {{login.response.body.$.body.token}}
+@supper_token = {{login.response.body.$.body.supper_token}}
+
+###
+
+POST {{host}}/api/payment/webhook/backpressure/iugu_pix
+Content-Type: application/json
+
+{
+  "data": {
+    "id": "A0677764CA134AA1916F05906F6DC644",
+    "status": "paid"
+  }
+}
+
+###
+
+POST {{host}}/api/payment/v2/5daf39ddc5c67d3ac8abbdc6
+Content-Type: application/json
+Authorization: {{token}}
+
+{
+  "cart": {
+    "userid": "5daf39ddc5c67d3ac8abbdc6",
+    "paymentToken": "e38e40fd-d6b1-4828-85eb-e03695267dea",
+    "products": {
+      "packages": [],
+      "queries": [
+        {
+          "code": 18,
+          "amount": 1,
+          "title": "Dados Cadastrais do Veículo",
+          "price": 9.9
+        }
+      ],
+      "signatures": []
+    },
+    "coupon": "5b22dae74e311af07882c149",
+    "discountValue": 1.49,
+    "totalPriceWithoutDiscount": 9.9,
+    "totalPrice": 8.41,
+    "installments": 1,
+    "type": "credit_card",
+    "discountedValue": 0
+  },
+  "total": 8.41,
+  "navigationToken": "03AGdBq258SVMqIzKUpb6vOx5HMOw1SuTDhP9QoANOxQJtFkKNMHnK6_ID6x6DlEFhxVwUDedUNQPExijtjykgo0R2W2hR92466LOxgw1JyRzYHvXxPwseSbvuQc04q4o2mc-s4l_odInoXblLhaWwylNCp5xqa9XLW9uQjbe5YRCx2Q7vKZbM9BCl2r0z6F2BHCVd4Idq8ZS4UlKKS5sTkGrl1H07tJe7DEUDB-Z15jDCXoWbg9HdVfWbEa-gS4VRrlRyb1N7nssWTC5cPN6IR_14SPXP2Z46TPzFSVQJNbYLR64EnQeikHXCimbRArYHZgiK6_FqOz9CQzICSDgxsndPD4_HxPqpAQrKnyrpAFgsYgAHn9wG_jc5OszigrFTSvFUMA82Ci5SfNmwQITcnXarx_ifcB8crjMmBQhF1myl-XnBzAYB1Rw",
+  "creditCardData": {
+    "bin": "411111",
+    "last4": "1111",
+    "expiration_date": "012029",
+    "installments": 1
+  },
+  "dataCardEncrypted": "eyJjYXJkTnVtYmVyIjoiNDExMTExMTExMTExMTExMSIsImNhcmRNb250aCI6IjAxIiwiY2FyZFllYXIiOiIyOSIsImNhcmRIb2xkZXJOYW1lIjoiVCBUIiwiY2FyZENjdiI6IjMyMSJ9"
+}
+
+# > {%
+# client.log(client.global.get('token'));
+# %}
+
+###
+
+POST {{host}}/api/payment/pix/5daf39ddc5c67d3ac8abbdc6
+Content-Type: application/json
+Authorization: {{token}}
+
+{
+  "cart": {
+    "userid": "5daf39ddc5c67d3ac8abbdc6",
+    "paymentToken": "e38e40fd-d6b1-4828-85eb-e03695267dea",
+    "products": {
+      "packages": [],
+      "queries": [
+        {
+          "code": 18,
+          "amount": 2,
+          "title": "Dados Cadastrais do Veículo",
+          "price": 9.9
+        }
+      ],
+      "signatures": []
+    },
+    "coupon": "5b22dae74e311af07882c149",
+    "discountValue": 1.49,
+    "totalPriceWithoutDiscount": 9.9,
+    "totalPrice": 8.41,
+    "installments": 1,
+    "type": "pix",
+    "discountedValue": 0
+  },
+  "total": 8.41,
+  "navigationToken": "03AGdBq258SVMqIzKUpb6vOx5HMOw1SuTDhP9QoANOxQJtFkKNMHnK6_ID6x6DlEFhxVwUDedUNQPExijtjykgo0R2W2hR92466LOxgw1JyRzYHvXxPwseSbvuQc04q4o2mc-s4l_odInoXblLhaWwylNCp5xqa9XLW9uQjbe5YRCx2Q7vKZbM9BCl2r0z6F2BHCVd4Idq8ZS4UlKKS5sTkGrl1H07tJe7DEUDB-Z15jDCXoWbg9HdVfWbEa-gS4VRrlRyb1N7nssWTC5cPN6IR_14SPXP2Z46TPzFSVQJNbYLR64EnQeikHXCimbRArYHZgiK6_FqOz9CQzICSDgxsndPD4_HxPqpAQrKnyrpAFgsYgAHn9wG_jc5OszigrFTSvFUMA82Ci5SfNmwQITcnXarx_ifcB8crjMmBQhF1myl-XnBzAYB1Rw"
+}
+
+> {%
+client.log(client.global.get('token'));
+%}
+
+###
+
+POST {{host}}/api/payment/bank-billet/5daf39ddc5c67d3ac8abbdc6
+Content-Type: application/json
+Authorization: {{token}}
+
+{
+  "cart": {
+    "userid": "5daf39ddc5c67d3ac8abbdc6",
+    "paymentToken": "e38e40fd-d6b1-4828-85eb-e03695267dea",
+    "products": {
+      "packages": [],
+      "queries": [
+        {
+          "code": 18,
+          "amount": 1,
+          "title": "Dados Cadastrais do Veículo",
+          "price": 9.9
+        }
+      ],
+      "signatures": []
+    },
+    "coupon": "5b22dae74e311af07882c149",
+    "discountValue": 1.49,
+    "totalPriceWithoutDiscount": 9.9,
+    "totalPrice": 8.41,
+    "installments": 1,
+    "type": "banking_billet",
+    "discountedValue": 0
+  },
+  "total": 8.41,
+  "navigationToken": "03AGdBq258SVMqIzKUpb6vOx5HMOw1SuTDhP9QoANOxQJtFkKNMHnK6_ID6x6DlEFhxVwUDedUNQPExijtjykgo0R2W2hR92466LOxgw1JyRzYHvXxPwseSbvuQc04q4o2mc-s4l_odInoXblLhaWwylNCp5xqa9XLW9uQjbe5YRCx2Q7vKZbM9BCl2r0z6F2BHCVd4Idq8ZS4UlKKS5sTkGrl1H07tJe7DEUDB-Z15jDCXoWbg9HdVfWbEa-gS4VRrlRyb1N7nssWTC5cPN6IR_14SPXP2Z46TPzFSVQJNbYLR64EnQeikHXCimbRArYHZgiK6_FqOz9CQzICSDgxsndPD4_HxPqpAQrKnyrpAFgsYgAHn9wG_jc5OszigrFTSvFUMA82Ci5SfNmwQITcnXarx_ifcB8crjMmBQhF1myl-XnBzAYB1Rw"
+}
+
+###
+
+GET {{host}}/api/payment/transactions-count
+Content-Type: application/json
+Authorization: {{token}}
+
+###
+
+GET {{host}}/api/payment/transactions/5daf39ddc5c67d3ac8abbdc6
+Content-Type: application/json
+Authorization: {{token}}
+
+###
+
+POST {{host}}/api/protected/payment/report
+Content-Type: application/json
+Authorization: {{token}}
+Supper: {{supper_token}}
+
+{
+  "endDate": "2021-07-31T03:00:00.000Z",
+  "initDate": "2021-07-01T03:00:00.000Z"
+}
+
+###
+
+GET https://api.iugu.com/v1/invoices/C210FE4B52FF4C33840AD16E0CD41EAF?api_token={{iugu_token}}
+
+###
+
+GET https://api.mercadopago.com/v1/payment_methods
+Authorization: Bearer APP_USR-3883534116957407-120616-78bfd291732d471315a56454e911883f-265084180
+
+###
+
+GET https://api.mercadopago.com/v1/payments/19639233043
+Authorization: Bearer APP_USR-3883534116957407-120616-78bfd291732d471315a56454e911883f-265084180
+
+###

@@ -1,0 +1,7 @@
+.idea
+.env
+.vscode
+node_modules/
+test/**/*.private.env.json
+scripts/
+npm_token

@@ -1,0 +1,76 @@
+# @name login
+POST {{host}}/auth/login
+Content-Type: application/json
+
+{
+  "username" : "{{username}}",
+  "password": "{{password}}"
+}
+
+###
+
+@token = {{login.response.body.$.body.token}}
+@supper_token = {{login.response.body.$.body.supper_token}}
+
+###
+
+POST {{host}}/api/vehicle/{{user_id}}
+Content-Type: application/json
+Authorization: {{token}}
+Supper: {{supper_token}}
+
+{
+  "querycode": "98",
+  "duplicity": true,
+  "keys": {
+    "placa": "kwc3928",
+    "uf": null
+  }
+}
+
+###
+
+POST {{host}}/api/vehicle/v2
+Content-Type: application/json
+Authorization: {{token}}
+Supper: {{supper_token}}
+
+{
+  "queryCode": "100",
+  "duplicity": true,
+  "client": "website",
+  "keys": {
+    "placa": "FRR2815"
+  }
+}
+
+###
+
+GET {{host}}/api/query/v2/6578d4ccee418bf5418a1f60?client=website
+Content-Type: application/json
+
+###
+
+POST {{host}}/api/vehicle/agregate
+Content-Type: application/json
+Authorization: {{token}}
+
+{ 
+  "keys": {
+    "placa": "ABC1234",
+    "chassi": null
+  }
+}
+
+###
+
+POST {{host}}/api/service
+Content-Type: application/json
+Authorization: {{token}}
+Supper: {{supper_token}}
+
+{
+  "queryid": "6512ccfa19aeba12c82276d1",
+  "serviceLog": null,
+  "serviceCode": 153
+}

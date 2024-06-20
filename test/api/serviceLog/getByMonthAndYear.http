@@ -1,0 +1,15 @@
+###
+
+GET {{host}}/api/protected/service-log/by-month-and-year/?month=6&year=2021
+Content-Type: application/json
+Authorization: {{token}}
+Supper: {{supper_token}}
+
+###
+
+GET {{host}}/api/protected/service-log/v2/by-month-and-year/?month=9&year=2023
+Content-Type: application/json
+Authorization: {{token}}
+Supper: {{supper_token}}
+
+###

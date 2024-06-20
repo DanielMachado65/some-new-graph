@@ -1,0 +1,117 @@
+POST {{zapay_url}}/api/query/search-debts
+Content-Type: application/json
+
+{
+  "applicationId": "{{application_id}}",
+  "vehicle": {
+    "plate": "KYC2559"
+  }
+}
+
+###
+
+POST {{zapay_url}}/api/installment/consult/1EOZYOZP
+Content-Type: application/json
+
+{
+  "applicationId": "{{application_id}}",
+  "protocol": "1EOZYOZP",
+  "debts": [
+    "6B1JPLE0JVL0"
+  ]
+}
+
+###
+
+POST {{zapay_url}}/api/checkout/by-credit-card
+Content-Type: application/json
+
+{
+  "applicationId": "{{application_id}}",
+  "protocol": "WVKVN1ZP",
+  "debts": [
+    "NI73LF22XW9G",
+    "6B1JPLE0JVL0"
+  ],
+  "installment": 1,
+  "card": {
+    "document": "00000000000",
+    "number": "4111111111111111",
+    "brand": "mastercard",
+    "holder": "Leia Morgana",
+    "expirationDate": "0721",
+    "cvv": "508",
+    "billingAddress": {
+      "zipCode": "70658196",
+      "address": "SHCES Quadra 1109 Bloco F",
+      "neighborhood": "Cruzeiro Novo",
+      "city": "Brasília",
+      "number": "221"
+    }
+  }
+}
+
+###
+
+POST {{zapay_url}}/api/checkout/by-pix
+Content-Type: application/json
+
+{
+  "applicationId": "{{application_id}}",
+  "protocol": "WVKVN1ZP",
+  "debts": [
+    "NI73LF22XW9G",
+    "6B1JPLE0JVL0"
+  ],
+  "pix": {
+    "name": "Leia Morgana",
+    "document": "00000000000"
+  }
+}
+
+###
+
+GET {{zapay_url}}/api/order/protocol/4IS7YFZP
+Content-Type: application/json
+
+###
+
+GET {{zapay_url}}/api/order/60b25f9f1563b40579dce3c4
+Content-Type: application/json
+
+###
+
+POST {{zapay_url}}/api/debt/retrieve-by-protocol-and-external-ids
+Content-Type: application/json
+
+{
+  "applicationId": "{{application_id}}",
+  "protocol": "WVKVN1ZP",
+  "debts": [
+    "NI73LF22XW9G"
+  ]
+}
+
+###
+
+POST {{zapay_url}}/api/debt/retrieve-by-external-ids
+Content-Type: application/json
+
+[
+  "NI73LF22XW9G"
+]
+
+###
+
+GET {{zapay_url}}/api/debt/NI73LF22XW9G
+Content-Type: application/json
+
+###
+
+POST {{zapay_url}}/api/webhook/register
+Content-Type: application/json
+
+{
+  "applicationId": "{{application_id}}",
+  "endpoint": "https://api.olhonocarro.com.br/api/payment/webhook/zapay"
+}

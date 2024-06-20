@@ -1,0 +1,16 @@
+GET {{host}}/api/support/location/postal-code/37540000
+Content-Type: application/json
+
+###
+
+GET {{host}}/api/support/banks/all
+Content-Type: application/json
+Authorization: {{token}}
+
+###
+
+GET {{host}}/api/support/banks/1
+Content-Type: application/json
+Authorization: {{token}}
+
+###

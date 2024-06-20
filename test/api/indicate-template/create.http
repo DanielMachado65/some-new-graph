@@ -1,0 +1,20 @@
+POST {{host}}/api/protected/indicate-template/create
+Content-Type: application/json
+Authorization: {{token}}
+Supper: {{supper_token}}
+
+{
+  "creator": "{{user_id}}",
+  "title":  "Teste 2",
+  "description": "Teste description 2",
+  "status": true,
+  "commission": 55,
+  "percentage":  55,
+  "version": 0,
+  "dataToShare": {
+    "text": "Texto para compartilhar",
+    "url": "www.olhonocarro.com.br"
+  }
+}
+
+###

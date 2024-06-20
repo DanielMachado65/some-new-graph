@@ -1,0 +1,52 @@
+POST {{host}}/api/quiz-answer/create
+Content-Type: application/json
+Authorization: {{token}}
+Supper: {{supper_token}}
+
+{
+  "quizId": "5e14c0899e59d54908cf6ff9",
+  "email": "william.castro@olhonocarro.com.br",
+  "answers": [
+    {
+      "question": "PERGUNTA 1",
+      "answers": [
+        {"answer": "RESPOSTA A"},
+        {"answer": "RESPOSTA B"},
+        {"answer": "RESPOSTA C"},
+        {"answer": "RESPOSTA D"}
+      ],
+      "rightAnswer": "RESPOSTA A",
+      "explanation": "Explicação",
+      "userAnswer" : "RESPOSTA A",
+      "imageURL": "https://s3-sa-east-1.amazonaws.com/olhonocarro.quiz/titulo_pergunta_1.png"
+    },
+    {
+      "question": "PERGUNTA 2",
+      "answers": [
+        {"answer": "RESPOSTA A"},
+        {"answer": "RESPOSTA B"},
+        {"answer": "RESPOSTA C"},
+        {"answer": "RESPOSTA D"}
+      ],
+      "rightAnswer": "RESPOSTA B",
+      "explanation": "Explicação",
+      "userAnswer" : "RESPOSTA B",
+      "imageURL": "https://s3-sa-east-1.amazonaws.com/olhonocarro.quiz/titulo_pergunta_1.png"
+    },
+    {
+      "question": "PERGUNTA 3",
+      "answers": [
+        {"answer": "RESPOSTA A"},
+        {"answer": "RESPOSTA B"},
+        {"answer": "RESPOSTA C"},
+        {"answer": "RESPOSTA D"}
+      ],
+      "rightAnswer": "RESPOSTA C",
+      "explanation": "Explicação",
+      "userAnswer" : "RESPOSTA A",
+      "imageURL": "https://s3-sa-east-1.amazonaws.com/olhonocarro.quiz/titulo_pergunta_1.png"
+    }
+  ]
+}
+
+###

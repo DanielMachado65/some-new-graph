@@ -1,0 +1,6 @@
+DELETE {{host}}/api/protected/quiz/5e976351205f06001c67a4cd
+Content-Type: application/json
+Authorization: {{token}}
+Supper: {{supper_token}}
+
+###

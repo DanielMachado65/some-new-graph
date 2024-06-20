@@ -1,0 +1,15 @@
+POST {{host}}/api/notification/callback/iugu
+Content-Type: application/json
+
+{
+  "event": "subscription.renewed",
+  "data": {
+    "id":"3C5EF2A5CD524902BD55CADAB59DEBFA",
+    "account_id":"89DC9587D89743DABDA6EFB36A0D8947",
+    "customer_name": "William",
+    "customer_email": "william.castro@olhonocarro.com.br"
+  }
+}
+
+
+###

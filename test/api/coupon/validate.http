@@ -1,0 +1,37 @@
+POST {{host}}/api/coupon/validate/teste_will
+Content-Type: application/json
+
+{
+  "userId": null,
+  "items": {
+    "packages": [
+      {
+        "id": "5abebd8e30694740b8848ba4",
+        "amount": 1,
+        "title": "Plano R$300 por R$270",
+        "price": 270
+      },
+      {
+        "id": "5abebda430694740b8848ba5",
+        "amount": 1,
+        "title": "Plano R$500 por R$425",
+        "price": 425
+      }
+    ],
+    "queries": [
+      {
+        "code": 18,
+        "amount": 2,
+        "title": "Leilão",
+        "price": 19.9
+      },
+      {
+        "code": 98,
+        "amount": 1,
+        "title": "Dados Cadastrais do Veículo",
+        "price": 9.9
+      }
+    ],
+    "signatures": []
+  }
+}

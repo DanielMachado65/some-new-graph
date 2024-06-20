@@ -1,0 +1,43 @@
+# @name login
+POST {{host}}/auth/login
+Content-Type: application/json
+
+{
+  "username" : "{{username}}",
+  "password": "{{password}}"
+}
+
+###
+
+@token = {{login.response.body.$.body.token}}
+@supper_token = {{login.response.body.$.body.supper_token}}
+
+###
+
+GET {{host}}/api/partner-incoming/
+Content-Type: application/json
+Authorization: {{token}}
+Supper: {{supper_token}}
+
+###
+
+GET {{host}}/api/partner-incoming/?code=OPINIAOSINCERA
+Content-Type: application/json
+Authorization: {{token}}
+Supper: {{supper_token}}
+
+###
+
+GET {{host}}/api/partner-incoming/?code=TESTE&month=6&year=2021
+Content-Type: application/json
+Authorization: {{token}}
+Supper: {{supper_token}}
+
+###
+
+GET {{host}}/api/partner-incoming/?month=5&year=2021
+Content-Type: application/json
+Authorization: {{token}}
+Supper: {{supper_token}}
+
+###

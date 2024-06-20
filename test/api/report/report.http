@@ -1,0 +1,99 @@
+# @name login
+POST {{host}}/auth/login
+Content-Type: application/json
+
+{
+  "username" : "{{username}}",
+  "password": "{{password}}"
+}
+
+###
+
+@token = {{login.response.body.$.body.token}}
+@supper_token = {{login.response.body.$.body.supper_token}}
+
+###
+
+POST {{host}}/api/report/partner-incoming/all-incomings
+Content-Type: application/json
+Authorization: {{token}}
+Supper: {{supper_token}}
+
+{
+  "month": "6",
+  "year": "2021"
+}
+
+###
+
+POST {{host}}/api/report/feedback/top-ratings
+Content-Type: application/json
+Authorization: {{token}}
+Supper: {{supper_token}}
+
+{
+  "month": "4",
+  "year": "2022"
+}
+
+###
+
+POST {{host}}/api/report/test-drive/chosen-versions
+Content-Type: application/json
+Authorization: {{token}}
+Supper: {{supper_token}}
+
+{
+  "month": "4",
+  "year": "2022"
+}
+
+###
+
+POST {{host}}/api/report/manually-generated-nfe/report-by-date
+Content-Type: application/json
+Authorization: {{token}}
+Supper: {{supper_token}}
+
+{
+  "month": "5",
+  "year": "2022"
+}
+
+###
+
+POST {{host}}/api/report/payments/active-signatures
+Content-Type: application/json
+Authorization: {{token}}
+Supper: {{supper_token}}
+
+{
+  "month": "6",
+  "year": "2022"
+}
+
+###
+
+POST {{host}}/api/report/payments/packages
+Content-Type: application/json
+Authorization: {{token}}
+Supper: {{supper_token}}
+
+{
+  "month": "6",
+  "year": "2022"
+}
+
+###
+
+POST {{host}}/api/report/suv/logs
+Content-Type: application/json
+Authorization: {{token}}
+Supper: {{supper_token}}
+
+{
+  "month": "11",
+  "year": "2022"
+}
+
+###

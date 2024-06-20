@@ -1,0 +1,25 @@
+###
+
+POST {{host}}/auth/login
+Content-Type: application/json
+
+{
+  "username" : "{{username}}",
+  "password": "{{password}}"
+}
+
+###
+
+GET {{host}}/auth/password-recovery?email=alisson.morais@olhonocarro.com.br
+Content-Type: application/json
+Accept: application/json
+
+###
+
+POST {{host}}/auth/new-password-confirmation
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoiNWRhZjM5ZGRjNWM2N2QzYWM4YWJiZGM2IiwiYWN0aXZlVXNlciI6ZmFsc2V9LCJpYXQiOjE2NjA4MzA4NTYsImV4cCI6MTY2MDkxNzI1Nn0.jtIeyQxiXwqvtVeHHKOje-zAaSsBlA8w8K-5JSH59Ns
+
+{
+  "password": "789456"
+}

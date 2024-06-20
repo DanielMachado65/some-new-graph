@@ -1,0 +1,49 @@
+# @name login
+POST {{host}}/auth/login
+Content-Type: application/json
+
+{
+  "username" : "{{username}}",
+  "password": "{{password}}"
+}
+
+###
+
+@token = {{login.response.body.$.body.token}}
+@supper_token = {{login.response.body.$.body.supper_token}}
+
+###
+
+POST {{host}}/api/test-drive
+Content-Type: application/json
+
+{
+  "duplicity": "true",
+  "key": "AAA0001",
+  "email": "HagaAHAH@HAHAH.COM",
+  "cpf": "01234567890",
+  "isOwnerVehicle": true ,
+  "navitagionToken" : true
+}
+
+###
+
+GET {{host}}/api/test-drive/representation/62ed75b5276b08001965a6bb
+Content-Type: application/json
+
+###
+
+POST {{host}}/api/query-executor/test-drive
+Content-Type: application/json
+Authorization: {{token}}
+
+{
+  "queryCode": 1000,
+  "navigationToken": "token",
+  "userCity": "São Paulo",
+  "keys": {
+    "placa": "HCM4423"
+  }
+}
+
+###

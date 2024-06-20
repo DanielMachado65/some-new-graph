@@ -1,0 +1,6 @@
+GET {{host}}/api/protected/indication/all
+Content-Type: application/json
+Authorization: {{token}}
+Supper: {{supper_token}}
+
+###

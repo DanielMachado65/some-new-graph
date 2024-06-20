@@ -1,0 +1,5 @@
+GET {{host}}/api/subscription/creator/5b3a5a5502ec385d4a14854b
+Content-Type: application/json
+Authorization: {{token}}
+
+###

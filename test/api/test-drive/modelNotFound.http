@@ -1,0 +1,11 @@
+POST {{host}}/api/test-drive/model-not-found/{{gToken}}
+Content-Type: application/json
+
+{
+    "queryId": "61a11b1ac1d05c6b2d9b523d",
+    "userModelInformation": "lorem lorem"
+}
+
+###
+
+GET {{host}}/api/report/model-not-found?month=10&year=2021

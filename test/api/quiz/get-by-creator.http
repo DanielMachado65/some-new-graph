@@ -1,0 +1,6 @@
+GET {{host}}/api/protected/quiz/by-creator/5b3a5a5502ec385d4a14854b
+Content-Type: application/json
+Authorization: {{token}}
+Supper: {{supper_token}}
+
+###

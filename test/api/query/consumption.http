@@ -1,0 +1,6 @@
+GET {{host}}/api/query/consumption-month/5daf39ddc5c67d3ac8abbdc6?month=3&year=2021
+Content-Type: application/json
+Authorization: {{token}}
+Supper: {{supper_token}}
+
+###

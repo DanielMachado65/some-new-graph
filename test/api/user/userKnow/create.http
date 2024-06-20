@@ -1,0 +1,14 @@
+POST {{host}}/api/user-know/create
+Content-Type: application/json
+
+{
+  "name": "William Teste 4",
+  "document": "01506683509",
+  "email": "hahaha@hahaha.com",
+  "phoneNumber": "35992046567",
+  "address": {
+    "uf": "MG"
+  }
+}
+
+###

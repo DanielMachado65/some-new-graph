@@ -1,0 +1,17 @@
+GET {{host}}/api/debts/search-debts/KYC2559
+Content-Type: application/json
+
+###
+
+POST {{host}}/api/debts/retrieve-installments
+Content-Type: application/json
+#Authorization: {{token}}
+
+{
+  "protocol": "WVKVN1ZP",
+  "debts": [
+    "NI73LF22XW9G"
+  ]
+}
+
+###

@@ -1,0 +1,28 @@
+# @name login
+POST {{host}}/auth/login
+Content-Type: application/json
+
+{
+  "username" : "{{username}}",
+  "password": "{{password}}"
+}
+
+###
+
+@token = {{login.response.body.$.body.token}}
+@supper_token = {{login.response.body.$.body.supper_token}}
+
+###
+
+POST {{host}}/api/protected/billing/report/all-user-data
+Content-Type: application/json
+Authorization: {{token}}
+Supper: {{supper_token}}
+
+{
+  "initDate": 1570476498000,
+  "endDate": 1573068498000,
+  "billingType": 2
+}
+
+###

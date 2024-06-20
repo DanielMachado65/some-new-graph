@@ -1,0 +1,36 @@
+GET {{host}}/api/testimonial
+Content-Type: application/json
+Authorization: {{token}}
+Supper: {{supper_token}}
+
+###
+
+POST {{host}}/api/testimonial
+Content-Type: application/json
+Authorization: {{token}}
+Supper: {{supper_token}}
+
+{
+    "authorName": "Generic Author",
+    "content": "Generic Content"
+}
+
+###
+
+PUT {{host}}/api/testimonial/603503bd2d1f1cac16d78205
+Content-Type: application/json
+Authorization: {{token}}
+Supper: {{supper_token}}
+
+{
+  "content": "Generic Content Updated"
+}
+
+###
+
+DELETE {{host}}/api/testimonial/603503bd2d1f1cac16d78205
+Content-Type: application/json
+Authorization: {{token}}
+Supper: {{supper_token}}
+
+###

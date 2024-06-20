@@ -1,0 +1,7 @@
+GET {{host}}/api/indicate-template/by-id/5ee1534d4ccc552ca4f325c5
+Content-Type: application/json
+Authorization: {{token}}
+Supper: {{supper_token}}
+
+###
+

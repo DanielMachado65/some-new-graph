@@ -1,0 +1,5 @@
+POST {{host}}/api/queryContext/re-execute/{{query_id}}
+Content-Type: application/json
+Authorization: {{token}}
+Supper: {{supper_token}}
+###

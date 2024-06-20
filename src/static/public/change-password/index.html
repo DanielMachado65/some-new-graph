@@ -1,0 +1,105 @@
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Olho no Carro | Alteração de senha</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link href="https://api.olhonocarro.com.br/change-password/src/css/style.css" rel="stylesheet" type="text/css">
+  <link rel="icon" href="https://api.olhonocarro.com.br/change-password/src/images/logo.png">
+</head>
+<body>
+  <div class="container">
+    <form id="contact" action="#" method="" onsubmit="return submitData();">
+      <img src="https://api.olhonocarro.com.br/change-password/src/images/logo0.png" alt="Smiley face" height="75px" width="auto">
+      <br>
+      <h3>Alteração de senha</h3>
+      <h4 id="hNameUser"></h4>
+      <label id="lblMailReference"></label>
+      <fieldset>
+        <input placeholder="Digite a nova senha aqui" name="password" id="password" type="password" minlength=6 tabindex="1" required autofocus required>
+      </fieldset>
+      <fieldset>
+        <input placeholder="Repita a nova senha" name="new_password" id="new_password" type="password" minlength=6 tabindex="2" required>
+      </fieldset>
+      <fieldset>
+        <button name="submit" type="submit" id="contact-submit" data-submit="...Processando">Confirmar</button>
+      </fieldset>
+      <p class="copyright">© 2018, Todos os direitos reservados <a href="https://www.olhonocarro.com.br/" target="_blank" title="Colorlib">Olho no Carro</a></p>
+    </form>
+  </div>
+  <div class="modal fade" id="modalGenericMessage" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title" id="headingModal"></h4>
+        </div>
+        <div class="modal-body">
+          <p id="pModal"></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script type="text/javascript">
+
+  var uid = getParameterByName('uid');
+  var email = getParameterByName('email');
+  var name = getParameterByName('name');
+  var hasChanged = false;
+  (email) ? $("#lblMailReference").html(`E-mail referido: ${email}`) : false;
+  (name) ? $("#hNameUser").html(`${name}, informe a nova senha e a confirme.`) :  false;
+
+  function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+    results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+  }
+
+  function submitData(event){
+    var result = (document.getElementsByName('password')[0].value === document.getElementsByName('new_password')[0].value) ? true : false;
+    if(!result){
+      $("#password").val('');
+      $("#new_password").val('');
+      $("#headingModal").html("OPS... AS SENHAS NÃO CONFEREM!");
+      $("#pModal").html("As senhas precisam ser idênticas! Por favor, informe-as novamente com atenção...");
+      $("#modalGenericMessage").modal();
+      return false;
+    }
+
+    var urlBase = document.location.origin;
+    var uri = "/auth/new-password-confirmation/"+uid;
+    var url = urlBase+uri;
+    var data = {
+      npass : $("#password").val()
+    }
+    $.post(url,data,function (data, status){
+      if(status == 'success' && data.status.cod == 200)
+      {
+        hasChanged = true;
+        $("#headingModal").html(data.body);
+        $("#pModal").html("Parabéns! Sua senha foi alterada com sucesso! "+name+", Por favor... Agora siga para o site e faça login com a nova senha cadastrada! 😃");
+        $("#modalGenericMessage").modal();
+      }
+    });
+    return false
+  }
+
+  $('#modalGenericMessage').on('hidden.bs.modal', function () {
+    if(hasChanged){
+      document.location.href = "https://www.olhonocarro.com.br";
+    }
+  });
+
+</script>
+</body>
+</html>

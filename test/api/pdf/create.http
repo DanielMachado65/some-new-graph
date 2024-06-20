@@ -1,0 +1,7 @@
+POST {{host}}/api/pdf/from-html
+Content-Type: application/json
+
+{
+  "url": "http://localhost:3000/resultado-da-consulta/?queryCode=100&queryId=604f4369a9c20805142c839c",
+  "fileName": "consulta.pdf"
+}

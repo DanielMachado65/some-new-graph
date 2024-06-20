@@ -1,0 +1,8 @@
+###
+
+POST {{host}}/api/protected/service/new/118
+Content-Type: application/json
+Authorization: {{token}}
+Supper: {{supper_token}}
+
+###
